@@ -45,8 +45,51 @@ namespace DAL
             return numeroFilasAfectadas;
         }
 
+        public static Personas buscarJugadorPorId(int id)
+        {
+            Personas persona = new Personas();
+            Conexion miContector = new Conexion();
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand miComando = new SqlCommand();
+            SqlDataReader miLector;
+            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = id;
+            try
+            {
+                conexion = miContector.mostrarConeccion();
+                miComando.CommandText = "SELECT * FROM Jugadores WHERE IDPersona = @id";
+                miComando.Connection = conexion;
+                miLector = miComando.ExecuteReader();
 
-        public static int editarJugador(Personas persona)
+                if (miLector.Read())
+                {
+                    persona = new Personas();
+                    persona.id = (int)miLector["ID"];
+                    persona.nombre = (string)miLector["Nombre"];
+                    persona.apellidos = (string)miLector["Apellidos"];
+                    if (miLector["FechaNacimiento"] != System.DBNull.Value)
+                    { persona.fechaNac = (DateTime)miLector["FechaNacimiento"]; }
+                    persona.direccion = (string)miLector["Direccion"];
+                    persona.telefono = (string)miLector["Telefono"];
+                    persona.idDepart = (int)miLector["IDDepartamento"];
+                }
+                miLector.Close();
+            }
+            catch (SqlException ex)
+            {
+
+                throw;
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+
+            }
+
+            return persona;
+        }
+
+        public static int insertarJugador(Personas persona)
         {
             int numeroAfectadasFilas = 0;
             Conexion miConexion = new Conexion();
@@ -63,13 +106,16 @@ namespace DAL
 
             try
             {
-                miComando
+                conexion = miConexion.mostrarConeccion();
+                miComando.CommandText = "INSERT INTO Persona VALUES (@id,@nombre,@telefono,@direccion,@foto,@fechaNac,@idDepart)";
+                miComando.Connection = conexion;
+                numeroAfectadasFilas=miComando.ExecuteNonQuery();
             }
             catch (SqlException ex)
             {
                 throw;
             }
-
+            return numeroAfectadasFilas;
         }
     }
 }
