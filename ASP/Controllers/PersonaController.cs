@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BL;
+using DAL;
 using ENT;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,23 +18,26 @@ namespace ASP.Controllers
         // GET: PersonaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Personas personas = new Personas();
+            personas = ManejadoraPersonasBL.buscarPersonaPorIdBL(id);
+            return View("Details",personas);
         }
 
         // GET: PersonaController/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Create");
         }
 
         // POST: PersonaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Personas persona)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                ManejadoraPersonasBL.insetarPersonaBL(persona);
+                return View();
             }
             catch
             {
@@ -44,17 +48,19 @@ namespace ASP.Controllers
         // GET: PersonaController/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Personas persona = ManejadoraPersonasBL.buscarPersonaPorIdBL(id);
+            return View("Edit",persona);
         }
 
         // POST: PersonaController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Personas persona)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                ManejadoraPersonasBL.editarPersonaBL(persona);
+                return View();
             }
             catch
             {
@@ -65,17 +71,19 @@ namespace ASP.Controllers
         // GET: PersonaController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Personas persona = ManejadoraPersonasBL.buscarPersonaPorIdBL(id);
+            return View("Delete",persona);
         }
 
         // POST: PersonaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id,int a)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                ManejadoraPersonasBL.borrarPersonasBL(id);
+                return View();
             }
             catch
             {

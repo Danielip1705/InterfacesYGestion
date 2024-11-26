@@ -16,7 +16,7 @@ namespace DAL
         /// </summary>
         /// <param name="id">Numero entero que indica el id del jugador</param>
         /// <returns></returns>
-        public static int borrarJugador(int id)
+        public static int borrarPersona(int id)
         {
             int numeroFilasAfectadas = 0;
             Conexion miContector = new Conexion();
@@ -26,7 +26,7 @@ namespace DAL
             try
             {
                 conexion = miContector.mostrarConeccion();
-                miComando.CommandText = "DELETE FROM Jugadores WHERE IDPersona = @id";
+                miComando.CommandText = "DELETE FROM Personas WHERE ID = @id";
                 miComando.Connection = conexion;
                 numeroFilasAfectadas = miComando.ExecuteNonQuery();
             }
@@ -44,8 +44,14 @@ namespace DAL
 
             return numeroFilasAfectadas;
         }
-
-        public static Personas buscarJugadorPorId(int id)
+        /// <summary>
+        /// Funcion que busca en la base de datos una persona por su id
+        /// Pre: Recibimos la id de la persona a buscar
+        /// Post: devolvemos la persona de la base de datos
+        /// </summary>
+        /// <param name="id">Id de la persona a buscar</param>
+        /// <returns>Persona encontrada</returns>
+        public static Personas buscarPersonaPorId(int id)
         {
             Personas persona = new Personas();
             Conexion miContector = new Conexion();
@@ -56,7 +62,7 @@ namespace DAL
             try
             {
                 conexion = miContector.mostrarConeccion();
-                miComando.CommandText = "SELECT * FROM Jugadores WHERE IDPersona = @id";
+                miComando.CommandText = "SELECT * FROM personas WHERE ID = @id";
                 miComando.Connection = conexion;
                 miLector = miComando.ExecuteReader();
 
@@ -89,7 +95,12 @@ namespace DAL
             return persona;
         }
 
-        public static int insertarJugador(Personas persona)
+        /// <summary>
+        /// Funcion que inserta una persona en la base de datos de azure
+        /// </summary>
+        /// <param name="persona">Objeto persona con los atributos llenos</param>
+        /// <returns>Numero de personas insertadas</returns>
+        public static int insertarPersona(Personas persona)
         {
             int numeroAfectadasFilas = 0;
             Conexion miConexion = new Conexion();
@@ -107,7 +118,7 @@ namespace DAL
             try
             {
                 conexion = miConexion.mostrarConeccion();
-                miComando.CommandText = "INSERT INTO Persona VALUES (@id,@nombre,@telefono,@direccion,@foto,@fechaNac,@idDepart)";
+                miComando.CommandText = "INSERT INTO Personas VALUES (@nombre,@apellidos,@telefono,@direccion,@foto,@fechaNac,@idDepart)";
                 miComando.Connection = conexion;
                 numeroAfectadasFilas=miComando.ExecuteNonQuery();
             }
@@ -116,6 +127,40 @@ namespace DAL
                 throw;
             }
             return numeroAfectadasFilas;
+        }
+
+        /// <summary>
+        /// Funcion que edita una persona de la base de datos de azure
+        /// </summary>
+        /// <param name="persona">Objeto Persona con los atributos llenos</param>
+        /// <returns>Numero de persona editada</returns>
+        public static int editarPersona(Personas persona)
+        {
+            int numeroFilaAfectadas = 0;
+            Conexion miConexion = new Conexion();
+            SqlConnection conexion = new SqlConnection();
+            SqlCommand miComando = new SqlCommand();
+            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.id;
+            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.nombre;
+            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.apellidos;
+            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.telefono;
+            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.direccion;
+            miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.foto;
+            miComando.Parameters.Add("@fechaNac", System.Data.SqlDbType.DateTime).Value = persona.fechaNac;
+            miComando.Parameters.Add("@idDepart", System.Data.SqlDbType.Int).Value = persona.idDepart;
+
+            try
+            {
+                conexion = miConexion.mostrarConeccion();
+                miComando.CommandText = "UPDATE Personas SET Nombre=@nombre,Apellidos=apellidos,FechaNacimiento=@fechaNac,Direccion=@direccion,Telefono=@telefono,IDDepartamento=@idDepart where ID = @id";
+                miComando.Connection = conexion;
+                numeroFilaAfectadas = miComando.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return numeroFilaAfectadas;
         }
     }
 }
