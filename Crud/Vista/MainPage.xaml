@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:personaVM="clr-namespace:Crud.VM"
+             x:Class="Crud.MainPage">
+    <ContentPage.BindingContext>
+        <personaVM:PersonaVM></personaVM:PersonaVM>
+    </ContentPage.BindingContext>
+    <StackLayout>
+        <ListView ItemsSource="{Binding ListaPersonas}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding nombre}"></Label>
+                            <Label Text="{Binding apellidos}"></Label>
+                            <Image Source="{Binding foto}"></Image>
+
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button HorizontalOptions="Center" CornerRadius="40" HeightRequest="50" WidthRequest="50" Text="+" FontSize="Large"
+        Clicked="Button_Button"/>
+    </StackLayout>
+</ContentPage>

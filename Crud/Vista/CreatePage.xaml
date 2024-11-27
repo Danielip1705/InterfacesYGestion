@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Crud.Vista.CreatePage"
+             Title="CreatePage">
+    <VerticalStackLayout>
+        <Label Text="Agregar"
+               VerticalOptions="Center"
+               HorizontalOptions="Center" />
+        
+        <Label Text="Nombre"/>
+        <Entry Placeholder="Inserte nombre" Text="{Binding persona}"/>
+        
+        <Label Text="Apellido"/>
+        <Entry Placeholder="Inserte apellido"/>
+        
+        <Label Text="Direccion"/>
+        <Entry Placeholder="Inserte direccion"/>
+        
+        <Label Text="Telefono"/>
+        <Entry Placeholder="Inserte telefono"/>
+        
+        <Label Text="Foto"/>
+        <Entry Placeholder="Inserte foto"/>
+        
+        <Label Text="Fecha nacimiento"/>
+        <DatePicker></DatePicker>
+
+        <Label Text="Id de departamento"/>
+        <Picker>
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Int32}">
+                    <x:Int32>1</x:Int32>
+                    <x:Int32>2</x:Int32>
+                    <x:Int32>3</x:Int32>
+                    <x:Int32>4</x:Int32>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+    </VerticalStackLayout>
+</ContentPage>
