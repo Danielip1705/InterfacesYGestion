@@ -5,6 +5,13 @@ namespace BL
 {
     public class ManejadoraPersonasBL
     {
+
+        public static List<Personas> listadoCompletoPersonasBL()
+        {
+            return ListadoBD.ListadoCompletoPersonaDAL();
+        }
+
+
         /// <summary>
         /// Funcion que borrar una persona haciendo usa de borrar persona de la DAL
         /// </summary>

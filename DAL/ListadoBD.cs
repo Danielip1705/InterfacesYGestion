@@ -38,7 +38,6 @@ namespace DAL
                     while (lector.Read())
                     {
                         persona = new Personas();
-                        persona = new Personas();
                         persona.id = (int)lector["ID"];
                         persona.nombre = (string)lector["Nombre"];
                         persona.apellidos = (string)lector["Apellidos"];
@@ -61,6 +60,43 @@ namespace DAL
             return listadoPersonas;
         }
 
+        public static List<Departamentos> listadoDepartamentosDAL()
+        {
+
+            //Creamos variable conexion
+            SqlConnection miConexion = new SqlConnection();
+            //Creamos listado para almacenar personas
+            List<Departamentos> listadoDepartamentos = new List<Departamentos>();
+            //Creamos comando para realizar comandos de sql server en visual
+            SqlCommand miComando = new SqlCommand();
+            SqlDataReader lector;
+            Departamentos departamento;
+            miConexion.ConnectionString = ("server=daniel-nervion-db.database.windows.net;database=DanielDB;uid=usuario;pwd=LaCampana123;trustServerCertificate=true;");
+            try
+            {
+                miConexion.Open();
+                miComando.CommandText ="SELECT * FROM Departamentos";
+                miComando.Connection = miConexion;
+                lector = miComando.ExecuteReader();
+                if (lector.Read())
+                {
+                    while (lector.Read())
+                    {   
+                        departamento = new Departamentos();
+                        departamento.ID = (int)lector["ID"];
+                        departamento.Nombre = (string)lector["Nombre"];
+                        listadoDepartamentos.Add(departamento);
+                    }
+                }
+                lector.Close();
+                miConexion.Close();
+            }
+            catch (SqlException ex)
+            {
+                throw;
+            }
+            return listadoDepartamentos;
+        }
 
     }
-    }
+}

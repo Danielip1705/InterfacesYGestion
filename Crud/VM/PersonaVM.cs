@@ -15,10 +15,23 @@ namespace Crud.VM
     public class PersonaVM : INotifyPropertyChanged
     {
         private Personas personasSelected;
+        public Personas persona;
         private ObservableCollection<Personas> listaPersonas;
         private DelegateCommand agregarCommand;
 
         #region Propiedades
+        public Personas Persona
+        {
+            get
+            {
+                return Persona;
+            }
+            set
+            {
+                personasSelected = value;
+                NotifyPropertyChanged("Persona");
+            }
+        }
         public Personas PersonasSelected
         {
             get 
@@ -53,13 +66,18 @@ namespace Crud.VM
 
         public PersonaVM()
         {
+            Persona = new Personas();
             PersonasSelected = new Personas();
             ListaPersonas = new ObservableCollection<Personas>(ListadoBD.ListadoCompletoPersonaDAL());
+            agregarCommand = new DelegateCommand(agregarCommand);
         }
 
         public void agregarPersona()
         {
-            
+            if (persona != null)
+            {
+                ManejadoraPersonasBL.insetarPersonaBL(persona);
+            }
         }
 
 

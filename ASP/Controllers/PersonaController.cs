@@ -11,7 +11,7 @@ namespace ASP.Controllers
         // GET: PersonaController
         public ActionResult Index()
         {
-            List<Personas> lista = ListadoBD.ListadoCompletoPersonaDAL();
+            List<Personas> lista = ManejadoraPersonasBL.listadoCompletoPersonasBL();
             return View(lista);
         }
 
