@@ -14,25 +14,25 @@
                HorizontalOptions="Center" />
         
         <Label Text="Nombre"/>
-        <Entry Placeholder="Inserte nombre" Text="{Binding persona.nombre}"/>
+        <Entry Placeholder="Inserte nombre" Text="{Binding persona.Nombre}"/>
         
         <Label Text="Apellido"/>
-        <Entry Placeholder="Inserte apellido" Text="{Binding persona.apellidos}"/>
+        <Entry Placeholder="Inserte apellido" Text="{Binding persona.Apellidos}"/>
         
         <Label Text="Direccion"/>
-        <Entry Placeholder="Inserte direccion" Text="{Binding persona.direccion}"/>
+        <Entry Placeholder="Inserte direccion" Text="{Binding persona.Direccion}"/>
         
         <Label Text="Telefono"/>
-            <Entry Placeholder="Inserte telefono" Text="{Binding persona.telefono}"/>
+            <Entry Placeholder="Inserte telefono" Text="{Binding persona.Telefono}"/>
         
         <Label Text="Foto"/>
-        <Entry Placeholder="Inserte foto" Text="{Binding persona.foto}"/>
+        <Entry Placeholder="Inserte foto" Text="{Binding persona.Foto}"/>
         
         <Label Text="Fecha nacimiento"/>
-        <DatePicker Date="{Binding persona.fechaNac}"></DatePicker>
+        <DatePicker Date="{Binding persona.FechaNac}"></DatePicker>
 
         <Label Text="Id de departamento"/>
-        <Picker SelectedIndex="{Binding persona.idDepart}">
+        <Picker SelectedIndex="{Binding persona.IdDepart}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:Int32}">
                     <x:Int32>1</x:Int32>

@@ -68,15 +68,14 @@ namespace DAL
 
                 if (miLector.Read())
                 {
-                    persona = new Personas();
-                    persona.id = (int)miLector["ID"];
-                    persona.nombre = (string)miLector["Nombre"];
-                    persona.apellidos = (string)miLector["Apellidos"];
+                    persona.Id = (int)miLector["ID"];
+                    persona.Nombre= (string)miLector["Nombre"];
+                    persona.Apellidos = (string)miLector["Apellidos"];
                     if (miLector["FechaNacimiento"] != System.DBNull.Value)
-                    { persona.fechaNac = (DateTime)miLector["FechaNacimiento"]; }
-                    persona.direccion = (string)miLector["Direccion"];
-                    persona.telefono = (string)miLector["Telefono"];
-                    persona.idDepart = (int)miLector["IDDepartamento"];
+                    { persona.FechaNac = (DateTime)miLector["FechaNacimiento"]; }
+                    persona.Direccion = (string)miLector["Direccion"];
+                    persona.Telefono = (string)miLector["Telefono"];
+                    persona.IdDepart = (int)miLector["IDDepartamento"];
                 }
                 miLector.Close();
             }
@@ -106,14 +105,14 @@ namespace DAL
             Conexion miConexion = new Conexion();
             SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.id;
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.nombre;
-            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.apellidos;
-            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.telefono;
-            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.direccion;
-            miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.foto;
-            miComando.Parameters.Add("@fechaNac", System.Data.SqlDbType.DateTime).Value = persona.fechaNac;
-            miComando.Parameters.Add("@idDepart", System.Data.SqlDbType.Int).Value = persona.idDepart;
+            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.Id;
+            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.Nombre;
+            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.Apellidos;
+            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.Telefono;
+            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.Direccion;
+            miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.Foto;
+            miComando.Parameters.Add("@fechaNac", System.Data.SqlDbType.DateTime).Value = persona.FechaNac;
+            miComando.Parameters.Add("@idDepart", System.Data.SqlDbType.Int).Value = persona.IdDepart;
 
             try
             {
@@ -140,14 +139,14 @@ namespace DAL
             Conexion miConexion = new Conexion();
             SqlConnection conexion = new SqlConnection();
             SqlCommand miComando = new SqlCommand();
-            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.id;
-            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.nombre;
-            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.apellidos;
-            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.telefono;
-            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.direccion;
-            miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.foto;
-            miComando.Parameters.Add("@fechaNac", System.Data.SqlDbType.DateTime).Value = persona.fechaNac;
-            miComando.Parameters.Add("@idDepart", System.Data.SqlDbType.Int).Value = persona.idDepart;
+            miComando.Parameters.Add("@id", System.Data.SqlDbType.Int).Value = persona.Id;
+            miComando.Parameters.Add("@nombre", System.Data.SqlDbType.VarChar).Value = persona.Nombre;
+            miComando.Parameters.Add("@apellido", System.Data.SqlDbType.VarChar).Value = persona.Apellidos;
+            miComando.Parameters.Add("@telefono", System.Data.SqlDbType.VarChar).Value = persona.Telefono;
+            miComando.Parameters.Add("@direccion", System.Data.SqlDbType.VarChar).Value = persona.Direccion;
+            miComando.Parameters.Add("@foto", System.Data.SqlDbType.VarChar).Value = persona.Foto;
+            miComando.Parameters.Add("@fechaNac", System.Data.SqlDbType.DateTime).Value = persona.FechaNac;
+            miComando.Parameters.Add("@idDepart", System.Data.SqlDbType.Int).Value = persona.IdDepart;
 
             try
             {

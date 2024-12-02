@@ -8,17 +8,38 @@ using System.Threading.Tasks.Dataflow;
 
 namespace ENT
 {
-    class PersonaConNombreDepart 
+    class PersonaConNombreDepart : Personas
     {
-        private List<Personas> listaPersonas;
-        private List<Departamentos> listaDepartamento;
+        #region Atributos
+        private string nombreDepart;
+        #endregion
 
-        public List<Personas> ListaPersonas { get { return listaPersonas; } }
-        public List<Departamentos> ListaDepartamento { get { return listaDepartamento; } }
-
-        public PersonaConNombreDepart()
+        #region Propiedades
+        public string NombreDepart
         {
-            ListaDepartamento = lista
+            get { return nombreDepart; }
+            set { nombreDepart = value; }
+        }
+        #endregion
+
+        public PersonaConNombreDepart(Personas per)
+        {
+            this.Id = per.Id;
+            this.Nombre= Nombre;
+            this.Apellidos = per.Apellidos;
+            this.Telefono = per.Telefono;
+            this.Direccion = per.Direccion;
+            this.Foto= per.Foto;
+            this.FechaNac= per.FechaNac;
+            this.IdDepart= per.IdDepart;
+
+            Departamentos depat = ManejadoraDepartamentosDAL.buscarDepartamentoPorId(this.Id);
+
+            if (depat != null)
+            {
+                this.nombreDepart = depat.Nombre;
+            }
+
         }
     }
 }

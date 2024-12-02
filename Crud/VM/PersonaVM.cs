@@ -69,15 +69,27 @@ namespace Crud.VM
             Persona = new Personas();
             PersonasSelected = new Personas();
             ListaPersonas = new ObservableCollection<Personas>(ListadoBD.ListadoCompletoPersonaDAL());
-            agregarCommand = new DelegateCommand(agregarCommand);
+            agregarCommand = new DelegateCommand(agregarPersona,canExecuteAgregarPersona);
         }
 
         public void agregarPersona()
         {
-            if (persona != null)
+            
+              ManejadoraPersonasBL.insetarPersonaBL(persona);
+            
+        }
+
+        public bool canExecuteAgregarPersona()
+        {
+            bool canExecute = false;
+
+            if (String.IsNullOrEmpty(persona.Nombre)&& String.IsNullOrEmpty(persona.Apellidos)
+                && String.IsNullOrEmpty(persona.Direccion)&& String.IsNullOrEmpty(persona.Telefono)&&
+                String.IsNullOrEmpty(persona.Foto)&& persona.IdDepart!=0)
             {
-                ManejadoraPersonasBL.insetarPersonaBL(persona);
+                canExecute = true;
             }
+            return canExecute;
         }
 
 

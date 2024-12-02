@@ -12,9 +12,9 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding nombre}"></Label>
-                            <Label Text="{Binding apellidos}"></Label>
-                            <Image Source="{Binding foto}"></Image>
+                            <Label Text="{Binding Nombre}"></Label>
+                            <Label Text="{Binding Apellidos}"></Label>
+                            <Image Source="{Binding Foto}"></Image>
 
                         </StackLayout>
                     </ViewCell>

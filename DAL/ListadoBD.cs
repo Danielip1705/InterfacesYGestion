@@ -38,14 +38,14 @@ namespace DAL
                     while (lector.Read())
                     {
                         persona = new Personas();
-                        persona.id = (int)lector["ID"];
-                        persona.nombre = (string)lector["Nombre"];
-                        persona.apellidos = (string)lector["Apellidos"];
+                        persona.Id = (int)lector["ID"];
+                        persona.Nombre= (string)lector["Nombre"];
+                        persona.Apellidos = (string)lector["Apellidos"];
                         if (lector["FechaNacimiento"] != System.DBNull.Value)
-                        { persona.fechaNac = (DateTime)lector["FechaNacimiento"]; }
-                        persona.direccion = (string)lector["Direccion"];
-                        persona.telefono = (string)lector["Telefono"];
-                        persona.idDepart = (int)lector["IDDepartamento"];
+                        { persona.FechaNac = (DateTime)lector["FechaNacimiento"]; }
+                        persona.Direccion = (string)lector["Direccion"];
+                        persona.Telefono = (string)lector["Telefono"];
+                        persona.IdDepart = (int)lector["IDDepartamento"];
                         listadoPersonas.Add(persona);
                     }
                     lector.Close();
