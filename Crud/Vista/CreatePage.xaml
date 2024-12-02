@@ -14,7 +14,7 @@
                HorizontalOptions="Center" />
         
         <Label Text="Nombre"/>
-        <Entry Placeholder="Inserte nombre" Text="{Binding persona.Nombre}"/>
+        <Entry Placeholder="Inserte nombre" Text="{Binding Persona.Nombre}"/>
         
         <Label Text="Apellido"/>
         <Entry Placeholder="Inserte apellido" Text="{Binding persona.Apellidos}"/>
