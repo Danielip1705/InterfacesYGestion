@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ENT.Personas>
+﻿@model IEnumerable<ASP.VM.PersonaConNombreDepart>
 
 @{
     ViewData["Title"] = "Index";
@@ -13,28 +13,28 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.id)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.apellidos)
+                @Html.DisplayNameFor(model => model.Apellidos)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.telefono)
+                @Html.DisplayNameFor(model => model.Telefono)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.direccion)
+                @Html.DisplayNameFor(model => model.Direccion)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.foto)
+                @Html.DisplayNameFor(model => model.Foto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.fechaNac)
+                @Html.DisplayNameFor(model => model.FechaNac)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.idDepart)
+                @Html.DisplayNameFor(model => model.NombreDepart)
             </th>
             <th></th>
         </tr>
@@ -43,33 +43,33 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.id)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.nombre)
+                @Html.DisplayFor(modelItem => item.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.apellidos)
+                @Html.DisplayFor(modelItem => item.Apellidos)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.telefono)
+                @Html.DisplayFor(modelItem => item.Telefono)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.direccion)
+                @Html.DisplayFor(modelItem => item.Direccion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.foto)
+                @Html.DisplayFor(modelItem => item.Foto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.fechaNac)
+                @Html.DisplayFor(modelItem => item.FechaNac)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.idDepart)
+                @Html.DisplayFor(modelItem => item.NombreDepart)
             </td>
             <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
             </td>
         </tr>
 }

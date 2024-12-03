@@ -16,8 +16,4 @@
     <ProjectReference Include="..\ENT\ENT.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\API\" />
-  </ItemGroup>
-
 </Project>

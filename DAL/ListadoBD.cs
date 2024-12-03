@@ -83,7 +83,7 @@ namespace DAL
                     while (lector.Read())
                     {   
                         departamento = new Departamentos();
-                        departamento.ID = (int)lector["ID"];
+                        departamento.Id = (int)lector["ID"];
                         departamento.Nombre = (string)lector["Nombre"];
                         listadoDepartamentos.Add(departamento);
                     }

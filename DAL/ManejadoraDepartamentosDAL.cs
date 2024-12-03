@@ -21,12 +21,12 @@ namespace DAL
             try
             {
                 conexion = miConector.mostrarConeccion();
-                miComando.CommandText = "SELECT * FROM Departamentos WHERE IDDepart = @id";
+                miComando.CommandText = "SELECT * FROM Departamentos WHERE ID = @id";
                 miComando.Connection = conexion;
                 miLector = miComando.ExecuteReader();
-                if (miLector != null)
+                if (miLector.Read())
                 {
-                    dept.ID = (int)miLector["IDDepart"];
+                    dept.Id = (int)miLector["ID"];
                     dept.Nombre = (string)miLector["Nombre"];
                 }
                 miLector.Close();

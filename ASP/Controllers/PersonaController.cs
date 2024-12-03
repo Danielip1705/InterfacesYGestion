@@ -1,4 +1,5 @@
-﻿using BL;
+﻿using ASP.VM;
+using BL;
 using DAL;
 using ENT;
 using Microsoft.AspNetCore.Http;
@@ -11,8 +12,9 @@ namespace ASP.Controllers
         // GET: PersonaController
         public ActionResult Index()
         {
+            ListadoPersonaConNombreDepartVM listadoPersonaDepart = new ListadoPersonaConNombreDepartVM();
             List<Personas> lista = ManejadoraPersonasBL.listadoCompletoPersonasBL();
-            return View(lista);
+            return View(listadoPersonaDepart);
         }
 
         // GET: PersonaController/Details/5

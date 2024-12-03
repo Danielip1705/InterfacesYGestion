@@ -12,7 +12,7 @@ namespace ENT
         private string _nombre;
 
 
-        public int ID { get { return _id; } set { _id = value; } }
+        public int Id { get { return _id; } set { _id = value; } }
         public string Nombre { get { return _nombre; } set { _nombre = value; } }
 
         public Departamentos()
