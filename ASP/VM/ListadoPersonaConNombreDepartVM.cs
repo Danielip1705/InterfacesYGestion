@@ -6,20 +6,19 @@ namespace ASP.VM
 {
     public class ListadoPersonaConNombreDepartVM
     {
-        List<PersonaConNombreDepart> lista = new List<PersonaConNombreDepart>();
-        List<Personas> personas;
-        List<Departamentos> departamentos;
-        //public List<PersonaConNombreDepart> Lista { get { return lista; } }
+       private List<PersonaConNombreDepart> listaConNombreDepart;
 
+        public List<PersonaConNombreDepart> Lista { get; set; }
         public ListadoPersonaConNombreDepartVM()
         {
-
+            List<Personas> personas = new List<Personas>();
+            List<Departamentos> departamentos = new List<Departamentos>();
             personas = ManejadoraPersonasBL.listadoCompletoPersonasBL();
             departamentos = ListadoBD.listadoDepartamentosDAL();
             foreach (Personas persona in personas)
             {
                 PersonaConNombreDepart personaDepart = new PersonaConNombreDepart(persona,departamentos);
-                lista.Add(personaDepart);
+                Lista.Add(personaDepart);
             }
 
         }

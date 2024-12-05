@@ -24,7 +24,7 @@ namespace Crud.VM
         {
             get
             {
-                return Persona;
+                return persona;
             }
             set
             {

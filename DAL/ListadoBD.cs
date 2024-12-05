@@ -78,8 +78,7 @@ namespace DAL
                 miComando.CommandText ="SELECT * FROM Departamentos";
                 miComando.Connection = miConexion;
                 lector = miComando.ExecuteReader();
-                if (lector.Read())
-                {
+             
                     while (lector.Read())
                     {   
                         departamento = new Departamentos();
@@ -87,7 +86,7 @@ namespace DAL
                         departamento.Nombre = (string)lector["Nombre"];
                         listadoDepartamentos.Add(departamento);
                     }
-                }
+                
                 lector.Close();
                 miConexion.Close();
             }

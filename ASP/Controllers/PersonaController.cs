@@ -12,9 +12,10 @@ namespace ASP.Controllers
         // GET: PersonaController
         public ActionResult Index()
         {
-            ListadoPersonaConNombreDepartVM listadoPersonaDepart = new ListadoPersonaConNombreDepartVM();
-            List<Personas> lista = ManejadoraPersonasBL.listadoCompletoPersonasBL();
-            return View(listadoPersonaDepart);
+            List<PersonaConNombreDepart> lista = new List<PersonaConNombreDepart>();
+            ListadoPersonaConNombreDepartVM vm = new ListadoPersonaConNombreDepartVM();
+            lista = vm.Lista;
+            return View(lista);
         }
 
         // GET: PersonaController/Details/5

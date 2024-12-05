@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BL;
+using DAL;
 using ENT;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,8 @@ namespace ASP.VM
 
         public PersonaConNombreDepart(Personas per,List<Departamentos> listaDepart)
         {
+            string nombreDept = "";
+
             this.Id = per.Id;
             this.Nombre = Nombre;
             this.Apellidos = per.Apellidos;
@@ -34,10 +37,30 @@ namespace ASP.VM
             this.FechaNac = per.FechaNac;
             this.IdDepart = per.IdDepart;
 
-            string nombreDepart = listaDepart.First(dept => dept.Id == per.IdDepart).Nombre;
-
-            this.nombreDepart = nombreDepart;
+            nombreDept = listaDepart.FirstOrDefault(dept => dept.Id == per.IdDepart).Nombre;
+            nombreDepart = nombreDept;
             
+
+        }
+        public PersonaConNombreDepart(int idpersona)
+        {
+
+            Personas per = ManejadoraPersonasBL.buscarPersonaPorIdBL(idpersona);
+            string nombreDept = "";
+
+            this.Id = per.Id;
+            this.Nombre = Nombre;
+            this.Apellidos = per.Apellidos;
+            this.Telefono = per.Telefono;
+            this.Direccion = per.Direccion;
+            this.Foto = per.Foto;
+            this.FechaNac = per.FechaNac;
+            this.IdDepart = per.IdDepart;
+
+
+            Departamentos depart = ManejadoraDepartamentosDAL.buscarDepartamentoPorId(IdDepart);
+            nombreDepart = depart.Nombre;
+
 
         }
     }
