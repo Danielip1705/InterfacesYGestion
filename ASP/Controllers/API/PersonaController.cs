@@ -38,9 +38,9 @@ namespace ASP.Controllers.API
         }
 
         // DELETE api/<PersonaController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       // [HttpDelete("{id}")]
+       // public void Delete(int id)
+       // {
+        //}
     }
 }

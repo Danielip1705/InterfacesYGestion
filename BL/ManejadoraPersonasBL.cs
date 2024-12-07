@@ -48,7 +48,7 @@ namespace BL
         /// <returns>Numero de filas afectadas</returns>
         public static int editarPersonaBL(Personas persona)
         {
-            return ManejadoraPersonas.insertarPersona(persona);
+            return ManejadoraPersonas.editarPersona(persona);
         }
     }
 }

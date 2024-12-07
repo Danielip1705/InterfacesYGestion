@@ -24,12 +24,17 @@ namespace ASP.VM
         }
         #endregion
 
-        public PersonaConNombreDepart(Personas per,List<Departamentos> listaDepart)
+        #region Constructores
+        /// <summary>
+        /// Constructor con parametros
+        /// </summary>
+        /// <param name="per">Objeto persona a añadir a personaDepartamento</param>
+        public PersonaConNombreDepart(Personas per)
         {
             string nombreDept = "";
 
             this.Id = per.Id;
-            this.Nombre = Nombre;
+            this.Nombre = per.Nombre;
             this.Apellidos = per.Apellidos;
             this.Telefono = per.Telefono;
             this.Direccion = per.Direccion;
@@ -37,11 +42,18 @@ namespace ASP.VM
             this.FechaNac = per.FechaNac;
             this.IdDepart = per.IdDepart;
 
+            List<Departamentos> listaDepart = ListadoBD.listadoDepartamentosDAL();
+
             nombreDept = listaDepart.FirstOrDefault(dept => dept.Id == per.IdDepart).Nombre;
+
             nombreDepart = nombreDept;
             
 
         }
+        /// <summary>
+        /// Constructor con id de la persona
+        /// </summary>
+        /// <param name="idpersona">Id de la persona a añadir a personaDepart</param>
         public PersonaConNombreDepart(int idpersona)
         {
 
@@ -49,7 +61,7 @@ namespace ASP.VM
             string nombreDept = "";
 
             this.Id = per.Id;
-            this.Nombre = Nombre;
+            this.Nombre = per.Nombre;
             this.Apellidos = per.Apellidos;
             this.Telefono = per.Telefono;
             this.Direccion = per.Direccion;
@@ -63,5 +75,6 @@ namespace ASP.VM
 
 
         }
+        #endregion
     }
 }

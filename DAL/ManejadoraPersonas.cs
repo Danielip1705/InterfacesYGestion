@@ -11,6 +11,7 @@ namespace DAL
 {
     public class ManejadoraPersonas
     {
+        #region Funciones
         /// <summary>
         /// Recibe numero entero en el cual es el id del jugador en el cual lo borra de la base de datos
         /// </summary>
@@ -117,7 +118,7 @@ namespace DAL
             try
             {
                 conexion = miConexion.mostrarConeccion();
-                miComando.CommandText = "INSERT INTO Personas VALUES (@nombre,@apellidos,@telefono,@direccion,@foto,@fechaNac,@idDepart)";
+                miComando.CommandText = "INSERT INTO Personas VALUES (@nombre,@apellido,@telefono,@direccion,@foto,@fechaNac,@idDepart)";
                 miComando.Connection = conexion;
                 numeroAfectadasFilas=miComando.ExecuteNonQuery();
             }
@@ -151,7 +152,7 @@ namespace DAL
             try
             {
                 conexion = miConexion.mostrarConeccion();
-                miComando.CommandText = "UPDATE Personas SET Nombre=@nombre,Apellidos=apellidos,FechaNacimiento=@fechaNac,Direccion=@direccion,Telefono=@telefono,IDDepartamento=@idDepart where ID = @id";
+                miComando.CommandText = "UPDATE Personas SET Nombre=@nombre,Apellidos=@apellido,FechaNacimiento=@fechaNac,Foto=@foto,Direccion=@direccion,Telefono=@telefono,IDDepartamento=@idDepart where ID = @id";
                 miComando.Connection = conexion;
                 numeroFilaAfectadas = miComando.ExecuteNonQuery();
             }
@@ -161,5 +162,6 @@ namespace DAL
             }
             return numeroFilaAfectadas;
         }
+        #endregion
     }
 }
