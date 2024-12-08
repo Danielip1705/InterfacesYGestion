@@ -10,6 +10,13 @@ namespace DAL
 {
     public class ManejadoraDepartamentosDAL
     {
+        /// <summary>
+        /// Funcion que toma de una base de datos un departamento por su id
+        /// pre: El usuario inserta la id del departamento
+        /// Post: Se envia el departamento
+        /// </summary>
+        /// <param name="id">Numero entero que indica el id del departamento</param>
+        /// <returns>Departamento con la id</returns>
         public static Departamentos buscarDepartamentoPorId(int id)
         {
             Departamentos dept = new Departamentos();

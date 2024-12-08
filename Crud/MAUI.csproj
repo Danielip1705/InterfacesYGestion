@@ -69,7 +69,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Vista\EditarPage.xaml.cs">
+	    <DependentUpon>EditarPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Vista\CreatePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Vista\EditarPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

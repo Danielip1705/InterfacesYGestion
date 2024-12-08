@@ -32,6 +32,7 @@ namespace Crud.VM
             get { return nombre; }
             set { nombre = value; NotifyPropertyChanged("Nombre");
                 insertarPersona.RaiseCanExecuteChanged();
+
             }
         }
         public string Apellidos
@@ -96,30 +97,49 @@ namespace Crud.VM
         }
 
 
+        /// <summary>
+        /// Función que ejecuta la creación de una nueva persona en la base de datos.
+        /// Pre: Nada
+        /// Post: Si la persona se crea correctamente en la base de datos, se muestra un mensaje de éxito al usuario.
+        /// </summary>
         public async void crearPersonaExecute()
         {
             Personas personas = new Personas(0, Nombre, Apellidos, Telefono, Direccion, Foto, FechaNac, IdDepart);
             int insertado = ManejadoraPersonasBL.insetarPersonaBL(personas);
             if (insertado > 0)
             {
-                await Application.Current.MainPage.DisplayAlert("Éxito","Persona insertada correctamente.","Cerrar");
+                await Application.Current.MainPage.DisplayAlert("Éxito", "Persona insertada correctamente.", "Cerrar");
             }
         }
 
-        public bool canCrearPersonaCommand(){
+        /// <summary>
+        /// Función que verifica si los campos necesarios para crear una persona están completos.
+        /// Pre: Nada
+        /// Post: Devuelve `true` si todos los campos requeridos están llenos y válidos, de lo contrario devuelve `false`.
+        /// </summary>
+        /// <returns>Booleano que indica si los campos necesarios están completos para crear la persona.</returns>
+        public bool canCrearPersonaCommand()
+        {
             bool canCreate = false;
 
-            if(!String.IsNullOrEmpty(Nombre)&& !String.IsNullOrEmpty(Apellidos)&& !String.IsNullOrEmpty(Telefono)
-                && !String.IsNullOrEmpty(Direccion)&& !String.IsNullOrEmpty(Foto)&& FechaNac!=null && IdDepart!=0)
+            if (!String.IsNullOrEmpty(Nombre) && !String.IsNullOrEmpty(Apellidos) && !String.IsNullOrEmpty(Telefono)
+                && !String.IsNullOrEmpty(Direccion) && !String.IsNullOrEmpty(Foto) && FechaNac != null && IdDepart != 0)
             {
                 canCreate = true;
             }
             return canCreate;
         }
 
-        public async void volverCommandExecute(){
+        /// <summary>
+        /// Función que maneja la navegación hacia la página principal.
+        /// Pre: No hay requisitos previos específicos para volver a la página principal.
+        /// Post: La aplicación navega hacia la página principal (MainPage).
+        /// </summary>
+        public async void volverCommandExecute()
+        {
             await Shell.Current.GoToAsync("///MainPage");
         }
+
 
 
         #region Notify

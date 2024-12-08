@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Crud.Vista.EditarPersona"
+             xmlns:vmEditar="clr-namespace:Crud.VM"
+             Title="EditarPersona">
+    <ContentPage.BindingContext>
+        <vmEditar:EditarPersonaVM></vmEditar:EditarPersonaVM>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout>
+        <HorizontalStackLayout Spacing="10">
+            <Button Command="{Binding VolverCommand}" Text="Volver" HeightRequest="20" WidthRequest="80" HorizontalOptions="Start"></Button>
+            <Label Text="Editar Persona"
+             VerticalOptions="Center"
+             HorizontalOptions="Center"
+             FontSize="Large"
+             FontAttributes="Bold"/>
+        </HorizontalStackLayout>
+        
+        <Label Text="Nombre"/>
+        <Entry Placeholder="Inserte nombre" Text="{Binding PersonaEditar.Nombre}"/>
+
+        <Label Text="Apellido"/>
+        <Entry Placeholder="Inserte apellido" Text="{Binding PersonaEditar.Apellidos}"/>
+
+        <Label Text="Direccion"/>
+        <Entry Placeholder="Inserte direccion" Text="{Binding PersonaEditar.Direccion}"/>
+
+        <Label Text="Telefono"/>
+        <Entry Placeholder="Inserte telefono" Text="{Binding PersonaEditar.Telefono}"/>
+
+        <Label Text="Foto"/>
+        <Entry Placeholder="Inserte foto" Text="{Binding PersonaEditar.Foto}"/>
+
+        <Label Text="Fecha nacimiento"/>
+        <DatePicker Date="{Binding PerPersonaEditarsonas.FechaNac}"></DatePicker>
+
+        <Label Text="Id de departamento"/>
+        <Picker SelectedIndex="{Binding PersonaEditar.IdDepart}">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:Int32}">
+                    <x:Int32>1</x:Int32>
+                    <x:Int32>2</x:Int32>
+                    <x:Int32>3</x:Int32>
+                    <x:Int32>4</x:Int32>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        <Button Command="{Binding EditarPersona}" Text="Editar"></Button>
+    </VerticalStackLayout>
+</ContentPage>

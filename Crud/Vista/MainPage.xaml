@@ -21,7 +21,13 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button HorizontalOptions="Center" CornerRadius="40" HeightRequest="50" WidthRequest="50" Text="+" FontSize="Large"
-        Command="{Binding CrearPersona}"/>
+        <HorizontalStackLayout Spacing="20" HorizontalOptions="Center" Padding="10">
+            <Button HorizontalOptions="Start" CornerRadius="40" HeightRequest="50" WidthRequest="50" Text="✏" FontSize="Medium"
+            Command="{Binding EditarPersona}"/>
+            <Button HorizontalOptions="Center" CornerRadius="40" HeightRequest="50" WidthRequest="50" Text="+" FontSize="Large"
+            Command="{Binding CrearPersona}"/>
+            <Button HorizontalOptions="Center" CornerRadius="40" HeightRequest="50" WidthRequest="50" Text="🗑️" FontSize="Large"
+            Command="{Binding EliminarPersona}"/>
+        </HorizontalStackLayout>
     </StackLayout>
 </ContentPage>

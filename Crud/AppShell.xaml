@@ -17,5 +17,9 @@
         ContentTemplate="{DataTemplate VM:CreatePage}"
         Route="CreatePage">
     </ShellContent>
+    <ShellContent
+        Title="Editar"
+        ContentTemplate="{DataTemplate VM:EditarPersona}"
+        Route="EditarPage"/>
 
 </Shell>
