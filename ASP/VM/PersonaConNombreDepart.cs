@@ -42,7 +42,7 @@ namespace ASP.VM
             this.FechaNac = per.FechaNac;
             this.IdDepart = per.IdDepart;
 
-            List<Departamentos> listaDepart = ListadoBD.listadoDepartamentosDAL();
+            List<Departamentos> listaDepart = ManejadoraDepartamentoBL.getListadoDepartametosBL();
 
             nombreDept = listaDepart.FirstOrDefault(dept => dept.Id == per.IdDepart).Nombre;
 
@@ -70,9 +70,8 @@ namespace ASP.VM
             this.IdDepart = per.IdDepart;
 
 
-            Departamentos depart = ManejadoraDepartamentosDAL.buscarDepartamentoPorId(IdDepart);
+            Departamentos depart = ManejadoraDepartamentoBL.getDepartamentosPorIdBL(IdDepart);
             nombreDepart = depart.Nombre;
-
 
         }
         #endregion

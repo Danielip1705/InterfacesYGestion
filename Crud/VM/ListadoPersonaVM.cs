@@ -71,7 +71,7 @@ namespace Crud.VM
         {
             PersonaDepart personaDept = null;
             List<Personas> persona = ManejadoraPersonasBL.listadoCompletoPersonasBL();
-            List<Departamentos> departamentos = ListadoBD.listadoDepartamentosDAL();
+            List<Departamentos> departamentos = ManejadoraDepartamentoBL.getListadoDepartametosBL();
 
             listaPersona = new ObservableCollection<PersonaDepart>();
 

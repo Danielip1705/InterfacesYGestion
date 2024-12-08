@@ -15,7 +15,7 @@ namespace ASP.VM
             List<Personas> personas = new List<Personas>();
             List<Departamentos> departamentos = new List<Departamentos>();
             personas = ManejadoraPersonasBL.listadoCompletoPersonasBL();
-            departamentos = ListadoBD.listadoDepartamentosDAL();
+            departamentos = ManejadoraDepartamentoBL.getListadoDepartametosBL();
             foreach (Personas persona in personas)
             {
                 PersonaConNombreDepart personaDepart = new PersonaConNombreDepart(persona);
