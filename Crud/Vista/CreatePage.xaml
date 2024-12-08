@@ -6,33 +6,40 @@
              Title="CreatePage">
 
     <ContentPage.BindingContext>
-        <VM:PersonaVM></VM:PersonaVM>
+        <VM:CrearPersona></VM:CrearPersona>
     </ContentPage.BindingContext>
     <VerticalStackLayout>
-        <Label Text="Agregar"
+        
+        <HorizontalStackLayout Spacing="10">
+            <Button Command="{Binding VolverCommand}" Text="Volver" HeightRequest="20" WidthRequest="80" HorizontalOptions="Start"></Button>
+
+            <Label Text="Agregar Persona"
                VerticalOptions="Center"
-               HorizontalOptions="Center" />
+               HorizontalOptions="Center"
+               FontSize="Large"
+               FontAttributes="Bold"/>
+        </HorizontalStackLayout>
         
         <Label Text="Nombre"/>
-        <Entry Placeholder="Inserte nombre" Text="{Binding Persona.Nombre}"/>
-        
+        <Entry Placeholder="Inserte nombre" Text="{Binding Nombre}"/>
+
         <Label Text="Apellido"/>
-        <Entry Placeholder="Inserte apellido" Text="{Binding persona.Apellidos}"/>
-        
+        <Entry Placeholder="Inserte apellido" Text="{Binding Apellidos}"/>
+
         <Label Text="Direccion"/>
-        <Entry Placeholder="Inserte direccion" Text="{Binding persona.Direccion}"/>
-        
+        <Entry Placeholder="Inserte direccion" Text="{Binding Direccion}"/>
+
         <Label Text="Telefono"/>
-            <Entry Placeholder="Inserte telefono" Text="{Binding persona.Telefono}"/>
-        
+        <Entry Placeholder="Inserte telefono" Text="{Binding Telefono}"/>
+
         <Label Text="Foto"/>
-        <Entry Placeholder="Inserte foto" Text="{Binding persona.Foto}"/>
-        
+        <Entry Placeholder="Inserte foto" Text="{Binding Foto}"/>
+
         <Label Text="Fecha nacimiento"/>
-        <DatePicker Date="{Binding persona.FechaNac}"></DatePicker>
+        <DatePicker Date="{Binding FechaNac}"></DatePicker>
 
         <Label Text="Id de departamento"/>
-        <Picker SelectedIndex="{Binding persona.IdDepart}">
+        <Picker SelectedIndex="{Binding IdDepart}">
             <Picker.ItemsSource>
                 <x:Array Type="{x:Type x:Int32}">
                     <x:Int32>1</x:Int32>
@@ -42,6 +49,6 @@
                 </x:Array>
             </Picker.ItemsSource>
         </Picker>
-        <Button Command="{Binding AgregarCommand}" Text="Agregar"></Button>
+        <Button Command="{Binding InsertarPersona}" Text="Agregar"></Button>
     </VerticalStackLayout>
 </ContentPage>

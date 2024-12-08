@@ -4,24 +4,24 @@
              xmlns:personaVM="clr-namespace:Crud.VM"
              x:Class="Crud.MainPage">
     <ContentPage.BindingContext>
-        <personaVM:PersonaVM></personaVM:PersonaVM>
+        <personaVM:ListadoPersonaVM></personaVM:ListadoPersonaVM>
     </ContentPage.BindingContext>
+
     <StackLayout>
-        <ListView ItemsSource="{Binding ListaPersonas}">
+        <ListView ItemsSource="{Binding ListaPersona}" SelectedItem="{Binding PersonaSelected}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <Label Text="{Binding Nombre}"></Label>
-                            <Label Text="{Binding Apellidos}"></Label>
+                            <Label Text="{Binding Nombre}" FontSize="Large" FontAttributes="Bold"></Label>
+                            <Label Text="{Binding NombreDepart}"></Label>
                             <Image Source="{Binding Foto}"></Image>
-
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
         <Button HorizontalOptions="Center" CornerRadius="40" HeightRequest="50" WidthRequest="50" Text="+" FontSize="Large"
-        Clicked="Button_Button"/>
+        Command="{Binding CrearPersona}"/>
     </StackLayout>
 </ContentPage>
