@@ -33,14 +33,14 @@ namespace DAL
                 miComando.CommandText = "SELECT * FROM Personas";
                 miComando.Connection = miConexion;
                 lector = miComando.ExecuteReader();
-                if (lector.Read())
-                {
+                
                     while (lector.Read())
                     {
                         persona = new Personas();
                         persona.Id = (int)lector["ID"];
                         persona.Nombre= (string)lector["Nombre"];
                         persona.Apellidos = (string)lector["Apellidos"];
+                        persona.Foto = (string)lector["Foto"];
                         if (lector["FechaNacimiento"] != System.DBNull.Value)
                         { persona.FechaNac = (DateTime)lector["FechaNacimiento"]; }
                         persona.Direccion = (string)lector["Direccion"];
@@ -50,7 +50,7 @@ namespace DAL
                     }
                     lector.Close();
                     miConexion.Close();
-                }
+                
             }
             catch (SqlException ex)
             {

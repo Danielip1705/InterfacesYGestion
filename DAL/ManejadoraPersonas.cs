@@ -69,14 +69,17 @@ namespace DAL
 
                 if (miLector.Read())
                 {
+                    persona = new Personas();
                     persona.Id = (int)miLector["ID"];
-                    persona.Nombre= (string)miLector["Nombre"];
+                    persona.Nombre = (string)miLector["Nombre"];
                     persona.Apellidos = (string)miLector["Apellidos"];
+                    persona.Foto = (string)miLector["Foto"];
                     if (miLector["FechaNacimiento"] != System.DBNull.Value)
                     { persona.FechaNac = (DateTime)miLector["FechaNacimiento"]; }
                     persona.Direccion = (string)miLector["Direccion"];
                     persona.Telefono = (string)miLector["Telefono"];
                     persona.IdDepart = (int)miLector["IDDepartamento"];
+
                 }
                 miLector.Close();
             }

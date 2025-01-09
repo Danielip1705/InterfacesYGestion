@@ -1,4 +1,6 @@
-﻿using DAL;
+﻿using ASP.VM;
+using BL;
+using DAL;
 using ENT;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,35 +14,94 @@ namespace ASP.Controllers.API
     {
         // GET: api/<PersonaController>
         [HttpGet]
-        public List<Personas> Get()
+        public IActionResult Get()
         {
-            List<Personas> lista = ListadoBD.ListadoCompletoPersonaDAL();
-            return lista;
+            IActionResult salida;
+            List<PersonaConNombreDepart> lista = new List<PersonaConNombreDepart>();
+            ListadoPersonaConNombreDepartVM vm;
+            try
+            {
+            lista = new List<PersonaConNombreDepart> ();
+            vm = new ListadoPersonaConNombreDepartVM ();
+            lista = vm.Lista;
+
+                if (lista.Count() == 0)
+                {
+                    salida = NoContent();
+                }
+                else
+                {
+                    salida = Ok(lista);
+                }
+            }
+            catch (Exception ex)
+            {
+                salida = BadRequest();
+            }
+            return salida;
         }
 
         // GET api/<PersonaController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return "value";
+            IActionResult salida;
+            PersonaConNombreDepart persona;
+            try
+            {
+                persona = new PersonaConNombreDepart(id);
+                if (persona ==null)
+                {
+                    salida = NoContent();
+                } else
+                {
+                    salida = Ok(persona);
+                }
+            } 
+            catch(Exception e)
+            {
+                salida = BadRequest();
+            }
+
+            return salida;
         }
 
         // POST api/<PersonaController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Personas persona)
         {
+            PersonaConNombreDepart personaDepart;
+            IActionResult salida;
+            try
+            {
+                persona = new PersonaConNombreDepart(persona);
+                if (persona==null)
+                {
+                    salida = NoContent();
+                } else
+                {
+                    salida = Ok(persona);
+                }
+            }
+            catch (Exception ex)
+            {
+                salida = BadRequest();
+            }
+            return salida;
         }
 
         // PUT api/<PersonaController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+
         }
 
-        // DELETE api/<PersonaController>/5
-       // [HttpDelete("{id}")]
-       // public void Delete(int id)
-       // {
-        //}
+         //DELETE api/<PersonaController>/5
+       [HttpDelete("{id}")]
+       public void Delete(int id)
+       {
+        ManejadoraPersonasBL.borrarPersonasBL(id);
+       }
     }
 }

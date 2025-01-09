@@ -6,10 +6,5 @@
         {
             InitializeComponent();
         }
-
-        private async void Button_Button(object sender, EventArgs e)
-        {
-            await Shell.Current.GoToAsync("//CreatePage");
-        }
     }
 }
