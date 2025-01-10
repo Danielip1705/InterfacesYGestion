@@ -71,16 +71,22 @@ namespace ASP.Controllers.API
         public IActionResult Post([FromBody] Personas persona)
         {
             PersonaConNombreDepart personaDepart;
-            IActionResult salida;
+            int anyadido;
+            IActionResult salida = null;
             try
             {
                 persona = new PersonaConNombreDepart(persona);
-                if (persona==null)
+                anyadido = ManejadoraPersonasBL.insetarPersonaBL(persona);
+                if (anyadido != 0)
                 {
-                    salida = NoContent();
-                } else
-                {
-                    salida = Ok(persona);
+                    if (persona==null)
+                    {
+                        salida = NoContent();
+                    } else
+                    {
+                        salida = Ok(persona);
+                    }
+
                 }
             }
             catch (Exception ex)
